@@ -1,6 +1,6 @@
 {
   "name": "flextypeonjs",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "A JavaScript type inference and automatic conversion library",
   "main": "dist/flextype.cjs.js",
   "module": "dist/flextype.esm.js",

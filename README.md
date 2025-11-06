@@ -16,7 +16,8 @@
 - **类型历史追踪**：记录变量的类型变化历史
 - **跨平台支持**：支持 Node.js 和浏览器环境
 
-**性能不好**
+**本js采用“以存储空间换取性能”的优化策略。** 
+在对象初始化时，所有类型推断和自动转换逻辑已预先执行并缓存结果。这意味着对象创建时的开销略有增加（存储空间增加），但在后续访问 `.value` 或进行操作时，性能将得到显著提升，避免了重复的类型检查和转换计算。
 
 ## 快速开始
 
@@ -293,14 +294,14 @@ import { flex } from 'flextypeonjs';
 async function fetchUserData(userId) {
   const response = await fetch(`/api/users/${userId}`);
   const data = await response.text(); // 假设返回的是字符串
-  
+
   // 自动转换 JSON 字符串
   return flex('userData', data);
 }
 
 // 使用
-const userData = await fetchUserData(123);
-console.log(userData.value.name); // 自动转换为对象后访问属性
+// 假设 fetchUserData 返回一个包含 { name: "John Doe" } 的 FlexType 实例
+// console.log(userData.value.name); // 自动转换为对象后访问属性
 ```
 
 ### 布尔值数学运算
@@ -310,8 +311,11 @@ import { flex } from 'flextypeonjs';
 
 // 布尔值运算示例
 const active = flex('active', true);
+// boolLock() 使得 true 在数学运算中被视为 1
+// 1 - 1 = 0
+// toBoolean() 将 0 转换为 false
 const result = active.boolLock().subtract(1).toBoolean();
-console.log(result.value); // false (true - 1 = false)
+console.log(result.value); // false
 ```
 
 ## 许可证
