@@ -1,0 +1,58 @@
+{
+  "name": "flextypeonjs",
+  "version": "2.0.0",
+  "description": "Universal runtime type inference & auto-conversion — strings to numbers, booleans, objects, arrays, and more",
+  "type": "module",
+  "main": "dist/flextype.cjs.js",
+  "module": "dist/flextype.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/flextype.esm.js",
+      "require": "./dist/flextype.cjs.js"
+    }
+  },
+  "browser": "dist/flextype.umd.js",
+  "unpkg": "dist/flextype.umd.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "build:prod": "rollup -c --environment BUILD:production",
+    "test": "node test.js",
+    "bench": "node bench.js",
+    "prepublishOnly": "npm run build:prod && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mxher07/flextype.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mxher07/flextype/issues"
+  },
+  "homepage": "https://github.com/Mxher07/flextype#readme",
+  "keywords": [
+    "flextype",
+    "type-inference",
+    "runtime-types",
+    "auto-convert",
+    "dynamic-type",
+    "flex-type",
+    "variant",
+    "any-type"
+  ],
+  "author": "Mxher07",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "rollup": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
