@@ -1,6 +1,6 @@
 {
   "name": "flextypeonjs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Universal runtime type inference & auto-conversion — strings to numbers, booleans, objects, arrays, and more",
   "type": "module",
   "main": "dist/flextype.cjs.js",
